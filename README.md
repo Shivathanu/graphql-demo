@@ -42,9 +42,3 @@ query{
   }
 }
 ```
-
-Try the [endPoint](https://graphql-demo-v2.now.sh/).
-
-Old [endPoint](https://graphql-demo.now.sh/) is still up.
-
-P.S: If you looking for older version, you can find it here -> [v1](https://github.com/hemanth/graphql-demo/tree/v1)
