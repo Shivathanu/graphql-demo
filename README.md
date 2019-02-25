@@ -1,4 +1,4 @@
-## [graphql-demo](https://github.com/hemanth/graphql-demo).
+## [graphql-demo](https://github.com/shivathanu/graphql-demo).
 
 A simple graphql-demo, which exposes an endPoint which can be quiered for books.
 
