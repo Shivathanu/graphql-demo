@@ -4,6 +4,10 @@
         "title": "Functional JavaScript: Introducing Functional Programming with Underscore.js",
         "author": "Michael Fogus",
         "isbn": "978-1449360726",
+        "category": {
+            "id": 1,
+            "type": "fiction"
+        },
         "url": "http://www.amazon.com/Functional-JavaScript-Introducing-Programming-Underscore-js/dp/1449360726"
     },
     {

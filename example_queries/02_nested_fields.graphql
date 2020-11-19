@@ -1,0 +1,13 @@
+{
+	allBooks(filter: {id: 1}) {
+		id
+		title
+		category {
+			id
+			type
+		}
+		author
+		isbn
+		url
+	}
+}
