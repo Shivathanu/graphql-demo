@@ -1,0 +1,7 @@
+mutation {
+	createBook(title: "GraphQL: Demo", author: "Torontino") {
+		id
+		title
+		author
+	}
+}

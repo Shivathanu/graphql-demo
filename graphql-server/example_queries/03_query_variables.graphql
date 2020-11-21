@@ -1,0 +1,14 @@
+{
+	query allBooks(filter: bookFilter){
+	allBooks(filter: $filter) {
+		id
+		title
+		category {
+			id
+			type
+		}
+		author
+		isbn
+		url
+	}
+}

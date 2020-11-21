@@ -1,0 +1,21 @@
+{
+	allBooks: book(filter: { id: 1 }) {
+		id
+		title
+		author
+		...bookCategory
+	}
+	allBooks: book(filter: { id: 2 }) {
+		id
+		title
+		author
+		...bookCategory
+	}
+}
+
+fragment bookCategory on book {
+	category {
+		id
+		type
+	}
+}
