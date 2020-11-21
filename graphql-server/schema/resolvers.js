@@ -1,4 +1,4 @@
-const books = require('./books.json')
+const books = require('../../books.json')
 
 module.exports = {
   Query: {
