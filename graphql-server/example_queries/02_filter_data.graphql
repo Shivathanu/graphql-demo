@@ -1,4 +1,4 @@
-########################          Exercise 3        ############################
+########################          Exercise 2        ############################
 
 ## Open in browser:::http://localhost:4000/
 ## Copy the below query to the first section on the left of the browser console.
@@ -6,9 +6,8 @@
 ## Description
 ## Below query is able to pass filter as inputs
 ## also get nested fields (category)
-
-query RootQuery($filter: bookFilter) {
-	allBooks(filter: $filter) {
+{
+	allBooks(filter: {id: 1}) {
 		id
 		title
 		category {
@@ -20,8 +19,3 @@ query RootQuery($filter: bookFilter) {
 		url
 	}
 }
-
-
-## Copy the below query to the bottom left section of the browser console.
-
-{ "filter": { "id": "1" } }

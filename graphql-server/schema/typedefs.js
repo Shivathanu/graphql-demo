@@ -21,6 +21,23 @@ const typeDefs = gql`
 		category: BookCategory
 	}
 
+	input BookInput {
+		title: String!
+		author: String!
+		isbn: String!
+		url: String!
+		category: BookCategoryInput
+	}
+
+	input UpdateBookInput {
+		id: ID!
+		title: String!
+		author: String!
+		isbn: String!
+		url: String!
+		category: BookCategoryInput
+	}
+
 	input bookFilter {
 		id: ID
 		title: String
@@ -31,7 +48,8 @@ const typeDefs = gql`
 	}
 
 	type Mutation {
-		createBook(title: String!, author: String!): Book
+		createBook(input: BookInput!): Book
+		updateBook(input: UpdateBookInput!): Book
 	}
 
 	type Query {

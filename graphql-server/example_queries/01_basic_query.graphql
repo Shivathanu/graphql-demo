@@ -1,3 +1,9 @@
+########################          Exercise 1        ############################
+
+#Steps to execute the below query in the playground IDE (http://localhost:4000/)
+
+## Open the above link 'http://localhost:4000/' in any browser of your choice.
+## Copy the below query to the first section on the left of the browser console.
 {
 	allBooks {
 		id
