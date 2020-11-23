@@ -1,5 +1,3 @@
-const url = require('url');
-
 const bookRoutes = (app, fs) => {
     // variables
     const dataPath = '../books.json';
@@ -9,17 +7,17 @@ const bookRoutes = (app, fs) => {
           if (err) {
             throw err;
           }
-    
+
           callback(returnJson ? JSON.parse(data) : data);
         });
     };
-    
+
     const writeFile = (fileData, callback, returnJson = false, filePath = dataPath, encoding = 'utf8') => {
         fs.writeFile(filePath, fileData, encoding, (err) => {
           if (err) {
             throw err;
           }
-    
+
           callback();
         });
     };
@@ -28,30 +26,29 @@ const bookRoutes = (app, fs) => {
       const key = Object.keys(data).find(book => data[book].id === 'id')
       return users.users[key]
     }
-    
-    
-  
+
+
+
     // READ
     app.get('/books', (req, res) => {
-      const queryObject = url.parse(req.url,true).query;
-      
+      const queryObject = req.query;
       if(queryObject.author !== undefined){
-        readFile(data => {  
+        readFile(data => {
           data = data.filter(function(book){
             return book.author.toUpperCase() === queryObject.author.toUpperCase()
           });
           res.status(200).send(data);
         }, true);
       }
-      else{  
-        readFile(data => {  
+      else{
+        readFile(data => {
           res.send(data);
         }, true);
       }
     });
 
     app.get('/books/:id', (req, res) => {
-      readFile(data => {  
+      readFile(data => {
         const key = Object.keys(data).find(book => data[book].id === req.params.id)
         var book = data[key]
         res.send(book);
@@ -59,7 +56,7 @@ const bookRoutes = (app, fs) => {
     });
 
     app.delete('/books/:id', function (req, res) {
-      readFile(data => {  
+      readFile(data => {
         const key = Object.keys(data).find(book => data[book].id === req.params.id)
         if (key === undefined){
           res.status(404).send('cant find book')
@@ -72,7 +69,7 @@ const bookRoutes = (app, fs) => {
         print(data)
 
         //delete data[key]
- 
+
 
         writeFile(JSON.stringify(data, null, 2), () => {
           res.status(200).send(data);
@@ -81,7 +78,7 @@ const bookRoutes = (app, fs) => {
    });
 
    app.put('/books/:id', (req, res) => {
-    readFile(data => {  
+    readFile(data => {
       const key = Object.keys(data).find(book => data[book].id === req.params.id)
       if (key === undefined){
         res.status(404).send('cant find book')
@@ -120,16 +117,16 @@ const bookRoutes = (app, fs) => {
 
         readFile(data => {
             const newBookId = Object.keys(data).length+1;
-            
+
             // add the new book
             body.id = newBookId.toString()
             if(body.isbn == undefined)
-              body.isbn = ""                          
+              body.isbn = ""
             if(body.url == undefined)
                 body.url = ""
-            
+
                 data[newBookId-1] = body;
-    
+
             writeFile(JSON.stringify(data, null, 2), () => {
                 //res.status(200).send('new book added');
                 res.status(200).send('Book added to json file');
@@ -138,5 +135,5 @@ const bookRoutes = (app, fs) => {
     });
 
 };
-  
+
   module.exports = bookRoutes;
