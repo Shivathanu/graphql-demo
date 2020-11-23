@@ -1,3 +1,5 @@
+const url = require('url');
+
 const bookRoutes = (app, fs) => {
     // variables
     const dataPath = '../books.json';
@@ -31,9 +33,21 @@ const bookRoutes = (app, fs) => {
   
     // READ
     app.get('/books', (req, res) => {
-      readFile(data => {  
-        res.send(data);
-      }, true);
+      const queryObject = url.parse(req.url,true).query;
+      
+      if(queryObject.author !== undefined){
+        readFile(data => {  
+          data = data.filter(function(book){
+            return book.author.toUpperCase() === queryObject.author.toUpperCase()
+          });
+          res.status(200).send(data);
+        }, true);
+      }
+      else{  
+        readFile(data => {  
+          res.send(data);
+        }, true);
+      }
     });
 
     app.get('/books/:id', (req, res) => {
@@ -94,6 +108,7 @@ const bookRoutes = (app, fs) => {
     }, true);
 
    });
+
 
     app.post('/books', (req, res) => {
         const body = req.body
