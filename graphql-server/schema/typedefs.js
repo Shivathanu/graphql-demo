@@ -50,6 +50,7 @@ const typeDefs = gql`
 	type Mutation {
 		createBook(input: BookInput!): Book
 		updateBook(input: UpdateBookInput!): Book
+		deleteBook(id: ID!): Book
 	}
 
 	type Query {

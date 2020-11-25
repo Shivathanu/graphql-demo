@@ -28,7 +28,7 @@ mutation {
 mutation {
 	updateBook(
 		input: {
-			id: 26
+			id: 27
 			title: "Artificial Intelligence Value"
 			author: "Michelle Obama"
 			isbn: "978-1449360726"
@@ -39,5 +39,14 @@ mutation {
 		author
 		isbn
 		url
+	}
+}
+
+########################          Exercise 7        ############################
+##Description:: Delete mutation for deleting the created data
+
+mutation {
+	deleteBook(id: "27") {
+		id
 	}
 }

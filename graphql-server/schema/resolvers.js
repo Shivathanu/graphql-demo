@@ -69,6 +69,27 @@ module.exports = {
 			}, true);
 
 			return srcData.input;
+		},
+		deleteBook: (_, srcData) => {
+			readFile((data) => {
+				const key = Object.keys(data).find(
+					(book) => data[book].id === srcData.id
+				);
+				if (key === undefined) {
+					return "cant find book";
+				}
+
+				data = data.filter(function (book) {
+					return book.id !== srcData.id;
+				});
+				//delete data[key]
+
+				writeFile(JSON.stringify(data, null, 2), () => {
+					return data;
+				});
+			}, true);
+
+			return srcData;
 		}
 	},
 };

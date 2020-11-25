@@ -66,7 +66,6 @@ const bookRoutes = (app, fs) => {
         data = data.filter(function(book){
           return book.id !== req.params.id
         });
-        print(data)
 
         //delete data[key]
 
